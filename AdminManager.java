@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -174,9 +175,22 @@ public class AdminManager {
                         break;
                     case 6:
                         System.out.print("Enter new admin username: ");
-                        String adminUser = scanner.nextLine();
-                        System.out.print("Enter new admin password: ");
-                        String adminPass = scanner.nextLine();
+                        String adminUser = scanner.nextLine().trim();
+						while (adminUser.isEmpty() || !adminUser.matches("[a-zA-Z ]+")) {
+							System.out.println("Enter valid name");
+							name = scanner.nextLine().trim();
+						}
+						String adminPass;
+						while (true) {
+						    System.out.print("Enter a 4-digit password: ");
+						    adminPass = scanner.next();
+
+						    if (adminPass.matches("\\d{4}")) {
+						        break;
+						    } else {
+						        System.out.println("Invalid password! Please enter a 4-digit numeric password only.");
+						    }
+						}
                         addAdmin(adminUser, adminPass);
                         break;
                     case 7:
