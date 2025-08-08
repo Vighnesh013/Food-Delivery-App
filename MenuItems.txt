@@ -1,0 +1,6 @@
+Pizza,250.0
+Burger,150.0
+Pasta,200.0
+Fries,100.0
+Sandwitch,120.0
+Drink,60.0
